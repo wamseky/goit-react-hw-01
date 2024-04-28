@@ -1,5 +1,5 @@
-import Transaction from "./Transaction";
-import css from "../Transaction/TransationHistory.module.css"
+import Transaction from "../Transaction/Transaction.jsx";
+import css from "../TransactionHistory/TransactionHistory.module.css"
 export default function TransactionHistory({ transactions }) {
   return (
     <table className={css.table}>
@@ -10,11 +10,13 @@ export default function TransactionHistory({ transactions }) {
           <th className={css.th}>Currency</th>
         </tr>
       </thead>
+      <tbody key={transactions.id}>
       {transactions.map((transaction) => (
-        <tbody className={css.tbody} key={transaction.id}>
+        <>
           <Transaction transactions={transaction} />
-        </tbody>
+        </>
       ))}
+      </tbody>
     </table>
   );
 }
